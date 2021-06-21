@@ -6,17 +6,17 @@ const val LEGEND_NAME = "Sulfuras, Hand of Ragnaros"
 
 class GildedRose(var items: Array<Item>) {
 
-    private val itemHandler = ItemHandler()
-    private val agedItemHandler = AgedItemHandler()
-    private val backStageTicketItemHandler = BackStageTicketItemHandler()
+    private val itemSystem : GlidedRoseSystemController = ItemSystem()
+    private val agedItemSystem  : GlidedRoseSystemController = AgedItemSystem()
+    private val backStageTicketItemSystem : GlidedRoseSystemController = BackStageTicketSystem()
 
     fun updateQuality(){
         items.forEach {
             when(it.name){
-                CHEESE_NAME -> agedItemHandler.passOneDay(it)
-                BACKSTAGE_PASS_TICKET_NAME -> backStageTicketItemHandler.passOneDay(it)
+                CHEESE_NAME -> agedItemSystem.passOneDay(it)
+                BACKSTAGE_PASS_TICKET_NAME -> backStageTicketItemSystem.passOneDay(it)
                 LEGEND_NAME -> {}
-                else -> itemHandler.passOneDay(it)
+                else -> itemSystem.passOneDay(it)
             }
         }
     }

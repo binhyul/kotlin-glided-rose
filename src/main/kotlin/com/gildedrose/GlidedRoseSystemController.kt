@@ -1,6 +1,6 @@
 package com.gildedrose
 
-class ItemHandler :GlidedRoseSystemController{
+class ItemSystem :GlidedRoseSystem(){
     override fun passOneDay(item: Item) {
         downSellIn(item)
         if(sellInTimeout(item)){
@@ -10,11 +10,6 @@ class ItemHandler :GlidedRoseSystemController{
         }
     }
 
-    private fun downSellIn(item: Item){
-        item.sellIn -= 1
-    }
-    private fun sellInTimeout(item: Item) = item.sellIn < 0
-
     private fun downQuality(item: Item, downPoint : Int){
         if(item.quality > downPoint){
             item.quality -= downPoint
@@ -22,13 +17,9 @@ class ItemHandler :GlidedRoseSystemController{
             zeroQuality(item)
         }
     }
-
-    private fun zeroQuality(item: Item){
-        item.quality =0
-    }
 }
 
-class AgedItemHandler : GlidedRoseSystemController{
+class AgedItemSystem : GlidedRoseSystem(){
     override fun passOneDay(item: Item) {
         downSellIn(item)
         if(sellInTimeout(item)){
@@ -38,11 +29,6 @@ class AgedItemHandler : GlidedRoseSystemController{
         }
     }
 
-    private fun downSellIn(item: Item){
-        item.sellIn -= 1
-    }
-    private fun sellInTimeout(item: Item) = item.sellIn < 0
-
     private fun upQuality(item: Item, upPoint : Int){
         if(item.quality +upPoint <= 50){
             item.quality += upPoint
@@ -50,24 +36,15 @@ class AgedItemHandler : GlidedRoseSystemController{
             maxQuality(item)
         }
     }
-
-    private fun maxQuality(item: Item){
-        item.quality =50
-    }
-
 }
 
-class BackStageTicketItemHandler : GlidedRoseSystemController{
+class BackStageTicketSystem : GlidedRoseSystem(){
     override fun passOneDay(item: Item) {
         val todayLeftSellIn = item.sellIn
         downSellIn(item)
         checkTicket(item,todayLeftSellIn)
     }
 
-    private fun downSellIn(item: Item){
-        item.sellIn -= 1
-    }
-    private fun sellInTimeout(item: Item) = item.sellIn < 0
 
     private fun checkTicket(item: Item,sellIn : Int){
         when{
@@ -85,12 +62,19 @@ class BackStageTicketItemHandler : GlidedRoseSystemController{
             maxQuality(item)
         }
     }
+}
 
-    private fun maxQuality(item: Item){
+abstract class GlidedRoseSystem: GlidedRoseSystemController{
+     fun downSellIn(item: Item){
+        item.sellIn -= 1
+    }
+     fun sellInTimeout(item: Item) = item.sellIn < 0
+
+     fun maxQuality(item: Item){
         item.quality =50
     }
 
-    private fun zeroQuality(item: Item){
+     fun zeroQuality(item: Item){
         item.quality =0
     }
 }
