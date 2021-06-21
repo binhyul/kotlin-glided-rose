@@ -12,6 +12,37 @@ internal class GildedRoseTest {
     private val legendItemQuality = 80
    private val legendItem = Item(legendItemName,10,legendItemQuality)
 
+    @Test
+    fun `일반 아이템이면 일반 아이템 시스템에 들어간다`(){
+        val item = Item(normalItemName,10,10)
+        val gildedRose = GildedRose(arrayOf(item))
+        val system = gildedRose.getItemSystem(item)
+        assert(system is ItemSystem)
+    }
+
+    @Test
+    fun `치즈면 에이징 아이템 시스템에 들어간다`(){
+        val item = Item(cheeseItemName,10,10)
+        val gildedRose = GildedRose(arrayOf(item))
+        val system = gildedRose.getItemSystem(item)
+        assert(system is AgedItemSystem)
+    }
+
+    @Test
+    fun `백 스테이지 티켓이면 티켓 아이템 시스템에 들어간다`(){
+        val item = Item(passTicketName,10,10)
+        val gildedRose = GildedRose(arrayOf(item))
+        val system = gildedRose.getItemSystem(item)
+        assert(system is BackStageTicketSystem)
+    }
+
+    @Test
+    fun `전설 아이템이면 딱히 시스템이 필요하지 않다`(){
+        val item =legendItem
+        val gildedRose = GildedRose(arrayOf(item))
+        val system = gildedRose.getItemSystem(item)
+        assert(system == null)
+    }
 
     @Test
     fun `일반아이템_퀄리티가 0 이상이고 전설템이 아니면 퀄리티가 떨어진다`(){

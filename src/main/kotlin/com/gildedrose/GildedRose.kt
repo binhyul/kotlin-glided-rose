@@ -12,12 +12,17 @@ class GildedRose(var items: Array<Item>) {
 
     fun updateQuality(){
         items.forEach {
-            when(it.name){
-                CHEESE_NAME -> agedItemSystem.passOneDay(it)
-                BACKSTAGE_PASS_TICKET_NAME -> backStageTicketItemSystem.passOneDay(it)
-                LEGEND_NAME -> {}
-                else -> itemSystem.passOneDay(it)
-            }
+          val system =  getItemSystem(it)
+            system?.passOneDay(it)
+        }
+    }
+
+    fun getItemSystem(item : Item) : GlidedRoseSystemController?{
+      return  when(item.name){
+            CHEESE_NAME -> agedItemSystem
+            BACKSTAGE_PASS_TICKET_NAME -> backStageTicketItemSystem
+            LEGEND_NAME -> null
+            else -> itemSystem
         }
     }
 
