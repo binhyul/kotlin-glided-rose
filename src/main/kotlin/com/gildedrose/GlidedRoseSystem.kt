@@ -2,6 +2,7 @@ package com.gildedrose
 
 
 abstract class GlidedRoseSystem : GlidedRoseSystemController {
+
     fun downSellIn(item: Item) {
         item.sellIn -= 1
     }

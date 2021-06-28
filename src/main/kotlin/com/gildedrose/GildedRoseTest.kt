@@ -12,11 +12,13 @@ internal class GildedRoseTest {
     private val legendItemQuality = 80
     private val legendItem = Item(legendItemName, 10, legendItemQuality)
 
+    private val factory = SystemFactory()
+
     @Test
     fun `일반 아이템이면 일반 아이템 시스템에 들어간다`() {
         val item = Item(normalItemName, 10, 10)
         val gildedRose = GildedRose(arrayOf(item))
-        val system = gildedRose.getItemSystem(item)
+        val system = factory.getItemSystem(item)
         assert(system is ItemSystem)
     }
 
@@ -24,7 +26,7 @@ internal class GildedRoseTest {
     fun `치즈면 에이징 아이템 시스템에 들어간다`() {
         val item = Item(cheeseItemName, 10, 10)
         val gildedRose = GildedRose(arrayOf(item))
-        val system = gildedRose.getItemSystem(item)
+        val system = factory.getItemSystem(item)
         assert(system is AgedItemSystem)
     }
 
@@ -32,7 +34,7 @@ internal class GildedRoseTest {
     fun `백 스테이지 티켓이면 티켓 아이템 시스템에 들어간다`() {
         val item = Item(passTicketName, 10, 10)
         val gildedRose = GildedRose(arrayOf(item))
-        val system = gildedRose.getItemSystem(item)
+        val system = factory.getItemSystem(item)
         assert(system is TicketSystem)
     }
 
@@ -40,7 +42,7 @@ internal class GildedRoseTest {
     fun `전설 아이템이면 딱히 시스템이 필요하지 않다`() {
         val item = legendItem
         val gildedRose = GildedRose(arrayOf(item))
-        val system = gildedRose.getItemSystem(item)
+        val system = factory.getItemSystem(item)
         assert(system == null)
     }
 
