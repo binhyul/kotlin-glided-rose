@@ -5,7 +5,7 @@ import com.gildedrose.Item
 
 class AgedItemSystem : GlidedRoseSystem() {
     override fun passOneDay(item: Item) {
-        downSellIn(item)
+        super.passOneDay(item)
         if (sellInTimeout(item)) {
             upQuality(item, 2)
         } else {

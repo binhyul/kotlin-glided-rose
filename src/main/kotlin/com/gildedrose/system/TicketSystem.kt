@@ -5,7 +5,7 @@ import com.gildedrose.Item
 class TicketSystem : GlidedRoseSystem() {
     override fun passOneDay(item: Item) {
         val todayLeftSellIn = item.sellIn
-        downSellIn(item)
+        super.passOneDay(item)
         checkTicket(item, todayLeftSellIn)
     }
 

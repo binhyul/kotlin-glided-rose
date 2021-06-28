@@ -2,6 +2,7 @@ package com.gildedrose
 
 import com.gildedrose.system.AgedItemSystem
 import com.gildedrose.system.ItemSystem
+import com.gildedrose.system.LegendSystem
 import com.gildedrose.system.TicketSystem
 import com.gildedrose.system.factory.SystemFactory
 import org.junit.jupiter.api.Test
@@ -47,11 +48,11 @@ internal class GildedRoseTest {
     }
 
     @Test
-    fun `전설 아이템이면 딱히 시스템이 필요하지 않다`() {
+    fun `전설 아이템이면 전설 시스템에 들어간다`() {
         val item = legendItem
         val gildedRose = GildedRose(arrayOf(item))
         val system = factory.getItemSystem(item)
-        assert(system == null)
+        assert(system is LegendSystem)
     }
 
     /**
@@ -211,10 +212,10 @@ internal class GildedRoseTest {
 
 
     @Test
-    fun `전설템이면 판매기한이 줄어들지 않는다`() {
+    fun `전설템이면 판매기한이 1줄어든다`() {
         val gildedRose = GildedRose(arrayOf(legendItem))
         gildedRose.updateQuality()
-        assert(legendItem.sellIn == 10)
+        assert(legendItem.sellIn == 9)
     }
 
     /**

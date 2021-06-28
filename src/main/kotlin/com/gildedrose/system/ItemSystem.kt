@@ -5,7 +5,7 @@ import com.gildedrose.Item
 
 class ItemSystem : GlidedRoseSystem() {
     override fun passOneDay(item: Item) {
-        downSellIn(item)
+        super.passOneDay(item)
         if (sellInTimeout(item)) {
             downQuality(item, 2)
         } else {

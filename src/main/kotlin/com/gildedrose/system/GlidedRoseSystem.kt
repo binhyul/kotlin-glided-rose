@@ -9,6 +9,10 @@ abstract class GlidedRoseSystem : GlidedRoseSystemController {
 
     fun isConjuredItem(itemName :String) = itemName.contains(CONJURED)
 
+    override fun passOneDay(item: Item) {
+        downSellIn(item)
+    }
+
     fun downSellIn(item: Item) {
         item.sellIn -= 1
     }
