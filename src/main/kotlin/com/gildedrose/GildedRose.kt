@@ -4,7 +4,7 @@ class GildedRose(var items: Array<Item>) {
 
     private val itemSystem: GlidedRoseSystemController = ItemSystem()
     private val agedItemSystem: GlidedRoseSystemController = AgedItemSystem()
-    private val backStageTicketItemSystem: GlidedRoseSystemController = BackStageTicketSystem()
+    private val ticketItemSystem: GlidedRoseSystemController = TicketSystem()
 
     fun updateQuality() {
         items.forEach {
@@ -16,7 +16,7 @@ class GildedRose(var items: Array<Item>) {
     fun getItemSystem(item: Item): GlidedRoseSystemController? {
         return when (item.name) {
             CHEESE_NAME -> agedItemSystem
-            BACKSTAGE_PASS_TICKET_NAME -> backStageTicketItemSystem
+            BACKSTAGE_PASS_TICKET_NAME -> ticketItemSystem
             LEGEND_NAME -> null
             else -> itemSystem
         }

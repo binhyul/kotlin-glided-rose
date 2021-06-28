@@ -33,7 +33,7 @@ internal class GildedRoseTest {
         val item = Item(passTicketName, 10, 10)
         val gildedRose = GildedRose(arrayOf(item))
         val system = gildedRose.getItemSystem(item)
-        assert(system is BackStageTicketSystem)
+        assert(system is TicketSystem)
     }
 
     @Test
