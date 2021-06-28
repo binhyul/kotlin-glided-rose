@@ -8,7 +8,7 @@ class GildedRose(var items: Array<Item>) {
     fun updateQuality() {
         items.forEach {
             val system = systemFactory.getItemSystem(it)
-            system?.passOneDay(it)
+            system.passOneDay(it)
         }
     }
 

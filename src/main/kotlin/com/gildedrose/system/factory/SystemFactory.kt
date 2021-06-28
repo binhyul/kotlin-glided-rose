@@ -18,7 +18,7 @@ class SystemFactory {
     private val ticketItemSystem: GlidedRoseSystemController = TicketSystem()
     private val legendSystem : GlidedRoseSystemController = LegendSystem()
 
-    fun getItemSystem(item: Item): GlidedRoseSystemController? {
+    fun getItemSystem(item: Item): GlidedRoseSystemController {
         return when  {
             item.name.contains(CHEESE_NAME) -> agedItemSystem
             item.name.contains(BACKSTAGE_PASS_TICKET_NAME) -> ticketItemSystem
