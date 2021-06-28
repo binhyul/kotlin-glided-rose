@@ -1,5 +1,9 @@
 package com.gildedrose
 
+import com.gildedrose.system.AgedItemSystem
+import com.gildedrose.system.ItemSystem
+import com.gildedrose.system.TicketSystem
+import com.gildedrose.system.factory.SystemFactory
 import org.junit.jupiter.api.Test
 
 internal class GildedRoseTest {

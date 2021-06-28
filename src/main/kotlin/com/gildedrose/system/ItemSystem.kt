@@ -1,4 +1,6 @@
-package com.gildedrose
+package com.gildedrose.system
+
+import com.gildedrose.Item
 
 
 class ItemSystem : GlidedRoseSystem() {

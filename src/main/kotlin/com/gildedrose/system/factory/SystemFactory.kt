@@ -1,4 +1,13 @@
-package com.gildedrose
+package com.gildedrose.system.factory
+
+import com.gildedrose.BACKSTAGE_PASS_TICKET_NAME
+import com.gildedrose.CHEESE_NAME
+import com.gildedrose.Item
+import com.gildedrose.LEGEND_NAME
+import com.gildedrose.system.AgedItemSystem
+import com.gildedrose.system.ItemSystem
+import com.gildedrose.system.TicketSystem
+import com.gildedrose.system.controller.GlidedRoseSystemController
 
 
 class SystemFactory {

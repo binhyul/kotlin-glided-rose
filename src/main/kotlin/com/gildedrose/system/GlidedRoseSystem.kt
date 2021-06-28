@@ -1,4 +1,8 @@
-package com.gildedrose
+package com.gildedrose.system
+
+import com.gildedrose.CONJURED
+import com.gildedrose.system.controller.GlidedRoseSystemController
+import com.gildedrose.Item
 
 
 abstract class GlidedRoseSystem : GlidedRoseSystemController {

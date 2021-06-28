@@ -1,8 +1,10 @@
 package com.gildedrose
 
+import com.gildedrose.system.factory.SystemFactory
+
 class GildedRose(var items: Array<Item>) {
 
-    private val systemFactory =SystemFactory()
+    private val systemFactory = SystemFactory()
     fun updateQuality() {
         items.forEach {
             val system = systemFactory.getItemSystem(it)
