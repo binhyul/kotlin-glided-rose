@@ -72,7 +72,7 @@ internal class GildedRoseTest {
         val item = Item(normalItemName, 10, 0)
         val gildedRose = GildedRose(arrayOf(item))
         gildedRose.updateQuality()
-        assert(item.quality >= 0)
+        assert(item.quality >= MIN_QUALITY)
     }
 
     @Test
@@ -119,7 +119,7 @@ internal class GildedRoseTest {
         val item = Item(cheeseItemName, 10, 50)
         val gildedRose = GildedRose(arrayOf(item))
         gildedRose.updateQuality()
-        assert(item.quality <= 50)
+        assert(item.quality <= MAX_QUALITY)
     }
 
     /**
@@ -163,7 +163,7 @@ internal class GildedRoseTest {
         val item = Item(passTicketName, 5, 49)
         val gildedRose = GildedRose(arrayOf(item))
         gildedRose.updateQuality()
-        assert(item.quality <= 50)
+        assert(item.quality <= MAX_QUALITY)
     }
 
     @Test
@@ -171,7 +171,7 @@ internal class GildedRoseTest {
         val item = Item(passTicketName, 10, 49)
         val gildedRose = GildedRose(arrayOf(item))
         gildedRose.updateQuality()
-        assert(item.quality <= 50)
+        assert(item.quality <= MAX_QUALITY)
     }
 
     @Test
@@ -179,7 +179,7 @@ internal class GildedRoseTest {
         val item = Item(passTicketName, 11, 50)
         val gildedRose = GildedRose(arrayOf(item))
         gildedRose.updateQuality()
-        assert(item.quality <= 50)
+        assert(item.quality <= MAX_QUALITY)
     }
 
     /**
@@ -251,7 +251,7 @@ internal class GildedRoseTest {
 
     @Test
     fun `일반 마법 아이템이면 일반 아이템 시스템에 들어간다`() {
-        val item = Item(conjured+normalItemName, 10, 10)
+        val item = Item(conjured + normalItemName, 10, 10)
         val gildedRose = GildedRose(arrayOf(item))
         val system = factory.getItemSystem(item)
         assert(system is ItemSystem)
@@ -259,7 +259,7 @@ internal class GildedRoseTest {
 
     @Test
     fun `마법에 걸린 치즈면 에이징 아이템 시스템에 들어간다`() {
-        val item = Item(conjured+cheeseItemName, 10, 10)
+        val item = Item(conjured + cheeseItemName, 10, 10)
         val gildedRose = GildedRose(arrayOf(item))
         val system = factory.getItemSystem(item)
         assert(system is AgedItemSystem)
@@ -267,7 +267,7 @@ internal class GildedRoseTest {
 
     @Test
     fun `마법에 걸린 백 스테이지 티켓이면 티켓 아이템 시스템에 들어간다`() {
-        val item = Item(conjured+passTicketName, 10, 10)
+        val item = Item(conjured + passTicketName, 10, 10)
         val gildedRose = GildedRose(arrayOf(item))
         val system = factory.getItemSystem(item)
         assert(system is TicketSystem)
@@ -290,7 +290,7 @@ internal class GildedRoseTest {
         val item = Item(conjured + normalItemName, 10, 0)
         val gildedRose = GildedRose(arrayOf(item))
         gildedRose.updateQuality()
-        assert(item.quality >= 0)
+        assert(item.quality >= MIN_QUALITY)
     }
 
     @Test
@@ -330,7 +330,7 @@ internal class GildedRoseTest {
         val item = Item(conjured + cheeseItemName, 10, 49)
         val gildedRose = GildedRose(arrayOf(item))
         gildedRose.updateQuality()
-        assert(item.quality <= 50)
+        assert(item.quality <= MAX_QUALITY)
     }
 
     /**
@@ -374,7 +374,7 @@ internal class GildedRoseTest {
         val item = Item(conjured + passTicketName, 5, 49)
         val gildedRose = GildedRose(arrayOf(item))
         gildedRose.updateQuality()
-        assert(item.quality <= 50)
+        assert(item.quality <= MAX_QUALITY)
     }
 
 
@@ -383,7 +383,7 @@ internal class GildedRoseTest {
         val item = Item(conjured + passTicketName, 10, 49)
         val gildedRose = GildedRose(arrayOf(item))
         gildedRose.updateQuality()
-        assert(item.quality <= 50)
+        assert(item.quality <= MAX_QUALITY)
     }
 
     @Test
@@ -391,6 +391,6 @@ internal class GildedRoseTest {
         val item = Item(conjured + passTicketName, 11, 50)
         val gildedRose = GildedRose(arrayOf(item))
         gildedRose.updateQuality()
-        assert(item.quality <= 50)
+        assert(item.quality <= MAX_QUALITY)
     }
 }
