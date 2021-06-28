@@ -1,6 +1,6 @@
 package com.gildedrose
 
-interface GlidedRoseSystemController{
+interface GlidedRoseSystemController {
     fun passOneDay(item: Item)
 }
 

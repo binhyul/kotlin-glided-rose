@@ -2,27 +2,25 @@ package com.gildedrose
 
 class GildedRose(var items: Array<Item>) {
 
-    private val itemSystem : GlidedRoseSystemController = ItemSystem()
-    private val agedItemSystem  : GlidedRoseSystemController = AgedItemSystem()
-    private val backStageTicketItemSystem : GlidedRoseSystemController = BackStageTicketSystem()
+    private val itemSystem: GlidedRoseSystemController = ItemSystem()
+    private val agedItemSystem: GlidedRoseSystemController = AgedItemSystem()
+    private val backStageTicketItemSystem: GlidedRoseSystemController = BackStageTicketSystem()
 
-    fun updateQuality(){
+    fun updateQuality() {
         items.forEach {
-          val system =  getItemSystem(it)
+            val system = getItemSystem(it)
             system?.passOneDay(it)
         }
     }
 
-    fun getItemSystem(item : Item) : GlidedRoseSystemController?{
-      return  when(item.name){
+    fun getItemSystem(item: Item): GlidedRoseSystemController? {
+        return when (item.name) {
             CHEESE_NAME -> agedItemSystem
             BACKSTAGE_PASS_TICKET_NAME -> backStageTicketItemSystem
             LEGEND_NAME -> null
             else -> itemSystem
         }
     }
-
-
 
 
 //

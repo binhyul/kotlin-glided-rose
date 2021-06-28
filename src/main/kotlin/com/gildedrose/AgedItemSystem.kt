@@ -1,20 +1,20 @@
 package com.gildedrose
 
 
-class AgedItemSystem : GlidedRoseSystem(){
+class AgedItemSystem : GlidedRoseSystem() {
     override fun passOneDay(item: Item) {
         downSellIn(item)
-        if(sellInTimeout(item)){
-            upQuality(item,2)
-        }else{
-            upQuality(item,1)
+        if (sellInTimeout(item)) {
+            upQuality(item, 2)
+        } else {
+            upQuality(item, 1)
         }
     }
 
-    private fun upQuality(item: Item, upPoint : Int){
-        if(item.quality +upPoint <= 50){
+    private fun upQuality(item: Item, upPoint: Int) {
+        if (item.quality + upPoint <= 50) {
             item.quality += upPoint
-        }else{
+        } else {
             maxQuality(item)
         }
     }
