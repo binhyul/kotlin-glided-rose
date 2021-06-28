@@ -3,6 +3,8 @@ package com.gildedrose
 
 abstract class GlidedRoseSystem : GlidedRoseSystemController {
 
+    fun isConjuredItem(itemName :String) = itemName.contains(CONJURED)
+
     fun downSellIn(item: Item) {
         item.sellIn -= 1
     }

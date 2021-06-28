@@ -12,8 +12,15 @@ class ItemSystem : GlidedRoseSystem() {
     }
 
     private fun downQuality(item: Item, downPoint: Int) {
-        if (item.quality > downPoint) {
-            item.quality -= downPoint
+        val qualityPoint = if(isConjuredItem(item.name)){
+            downPoint *2
+        }else{
+            downPoint
+        }
+
+
+        if (item.quality > qualityPoint) {
+            item.quality -= qualityPoint
         } else {
             zeroQuality(item)
         }

@@ -18,8 +18,14 @@ class TicketSystem : GlidedRoseSystem() {
     }
 
     private fun upQuality(item: Item, upPoint: Int) {
-        if (item.quality + upPoint <= 50) {
-            item.quality += upPoint
+        val qualityPoint = if(isConjuredItem(item.name)){
+            upPoint *2
+        }else{
+            upPoint
+        }
+
+        if (item.quality + qualityPoint <= 50) {
+            item.quality += qualityPoint
         } else {
             maxQuality(item)
         }
