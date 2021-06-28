@@ -1,6 +1,6 @@
 package com.gildedrose
 
-class BackStageTicketSystem : GlidedRoseSystem(){
+class TicketSystem : GlidedRoseSystem(){
     override fun passOneDay(item: Item) {
         val todayLeftSellIn = item.sellIn
         downSellIn(item)
