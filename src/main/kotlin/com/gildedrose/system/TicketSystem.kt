@@ -1,6 +1,7 @@
 package com.gildedrose.system
 
 import com.gildedrose.Item
+import com.gildedrose.MAX_QUALITY
 
 class TicketSystem : GlidedRoseSystem() {
     override fun passOneDay(item: Item) {
@@ -26,7 +27,7 @@ class TicketSystem : GlidedRoseSystem() {
             upPoint
         }
 
-        if (item.quality + qualityPoint <= 50) {
+        if (item.quality + qualityPoint <= MAX_QUALITY) {
             item.quality += qualityPoint
         } else {
             maxQuality(item)

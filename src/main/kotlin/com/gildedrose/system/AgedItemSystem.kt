@@ -1,6 +1,7 @@
 package com.gildedrose.system
 
 import com.gildedrose.Item
+import com.gildedrose.MAX_QUALITY
 
 
 class AgedItemSystem : GlidedRoseSystem() {
@@ -20,7 +21,7 @@ class AgedItemSystem : GlidedRoseSystem() {
             upPoint
         }
 
-        if (item.quality + qualityPoint <= 50) {
+        if (item.quality + qualityPoint <= MAX_QUALITY) {
             item.quality += qualityPoint
         } else {
             maxQuality(item)

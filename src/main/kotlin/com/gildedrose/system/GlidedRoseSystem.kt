@@ -3,6 +3,8 @@ package com.gildedrose.system
 import com.gildedrose.CONJURED
 import com.gildedrose.system.controller.GlidedRoseSystemController
 import com.gildedrose.Item
+import com.gildedrose.MAX_QUALITY
+import com.gildedrose.MIN_QUALITY
 
 
 abstract class GlidedRoseSystem : GlidedRoseSystemController {
@@ -20,10 +22,10 @@ abstract class GlidedRoseSystem : GlidedRoseSystemController {
     fun sellInTimeout(item: Item) = item.sellIn < 0
 
     fun maxQuality(item: Item) {
-        item.quality = 50
+        item.quality = MAX_QUALITY
     }
 
     fun zeroQuality(item: Item) {
-        item.quality = 0
+        item.quality = MIN_QUALITY
     }
 }
